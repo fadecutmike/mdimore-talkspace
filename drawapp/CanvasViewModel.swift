@@ -18,7 +18,9 @@ class CanvasViewModel {
     
     lazy var savedBrushstrokes: [CAShapeLayer] = {
         var result = [CAShapeLayer]()
-        if let strokes = drawingItem.brushstrokes {
+        
+        // Only play back a limited number of the most recent brushstrokes to prevent any potential performance issues
+        if let strokes = drawingItem.brushstrokes?.suffix(45) {
             for stroke in strokes {
                 if let stroke = stroke as? Brushstroke, let drawing = stroke.brushPath, drawing.isEmpty == false {
                     let layer = CAShapeLayer()

@@ -24,6 +24,7 @@ class DetailViewController: UIViewController {
         canvas.delegate = self
         detailDescriptionLabel.text = viewModel?.createdText
         
+        // This array represents the five available color options
         let brushColor:[UIColor] = [.black, .blue, .green, .red, .purple]
         brushColor.forEach({ (color) in
             if let btn = viewModel?.makeButton(bgColor: color) {
@@ -34,13 +35,34 @@ class DetailViewController: UIViewController {
         if let eraserOption = viewModel?.makeButton(bgColor: .clear, UIImage(named: "eraser")) {
             brushOptions.addArrangedSubview(eraserOption)
         }
+        
+        // Prevent swipe to go back on UINavigationController which can interfere with drawing input
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Load previous brushstrokes if they any exist in Core Data
-        viewModel?.savedBrushstrokes.forEach({ bgView.layer.addSublayer($0)} )
+        if let saved = viewModel?.savedBrushstrokes, saved.count > 0 {
+            // Prevents brushstrokes while saved data is loaded or 'drawn' on screen
+            canvas.isUserInteractionEnabled = false
+            CATransaction.begin()
+            CATransaction.setCompletionBlock { self.canvas.isUserInteractionEnabled = true }
+            
+            // Load previous brushstrokes if they any exist in Core Data
+            saved.enumerated().forEach({ (n, brushLayer) in
+                // Fade animation to imitate live 'playback' of brushstrokes when loading saved work
+                let appearAnimation = CABasicAnimation(keyPath: "opacity")
+                appearAnimation.fromValue = 0.0
+                appearAnimation.toValue = 1.0
+                appearAnimation.duration = 0.3
+                appearAnimation.fillMode = .backwards
+                appearAnimation.beginTime = CACurrentMediaTime() + TimeInterval(n)/8
+                brushLayer.add(appearAnimation, forKey: "opacity")
+                bgView.layer.addSublayer(brushLayer)
+            })
+            CATransaction.commit()
+        }
         view.sendSubviewToBack(bgView)
     }
     
