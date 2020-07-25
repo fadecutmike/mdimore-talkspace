@@ -82,7 +82,7 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         let event = fetchedResultsController.object(at: indexPath)
-        configureCell(cell, withDrawing: event)
+        configureCell(cell, withDrawing: event, indexPath)
         return cell
     }
 
@@ -107,12 +107,20 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
         }
     }
 
-    func configureCell(_ cell: UITableViewCell, withDrawing event: Drawing) {
-        cell.textLabel!.text = event.timestamp!.description
+    func configureCell(_ cell: UITableViewCell, withDrawing event: Drawing, _ indexPath:IndexPath?) {
+        if let created = event.timestamp, let ipath = indexPath {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd/yy"
+            cell.textLabel!.text = "Drawing \(tableView.numberOfRows(inSection: 0)-ipath.row)\t\(dateFormatter.string(from: created))"
+        }
+        
+        cell.imageView?.contentMode = .scaleAspectFill
+        if let imageData = event.thumbnail, let img = UIImage(data: imageData) {
+            cell.imageView?.image = img
+        }
     }
 
     // MARK: - Fetched results controller
-
     var fetchedResultsController: NSFetchedResultsController<Drawing> {
         if _fetchedResultsController != nil {
             return _fetchedResultsController!
@@ -169,9 +177,9 @@ class MasterViewController: UITableViewController, NSFetchedResultsControllerDel
             case .delete:
                 tableView.deleteRows(at: [indexPath!], with: .fade)
             case .update:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withDrawing: anObject as! Drawing)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withDrawing: anObject as! Drawing, indexPath)
             case .move:
-                configureCell(tableView.cellForRow(at: indexPath!)!, withDrawing: anObject as! Drawing)
+                configureCell(tableView.cellForRow(at: indexPath!)!, withDrawing: anObject as! Drawing, indexPath)
                 tableView.moveRow(at: indexPath!, to: newIndexPath!)
             default:
                 return

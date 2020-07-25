@@ -13,26 +13,35 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var canvas: CanvasView!
     @IBOutlet weak var detailDescriptionLabel: UILabel!
     @IBOutlet weak var brushOptions: UIStackView!
+    @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var brushSizePreview: UIView!
+    @IBOutlet weak var brushPreviewConstraint: NSLayoutConstraint!
     
     var viewModel: CanvasViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         canvas.delegate = self
-        
         detailDescriptionLabel.text = viewModel?.createdText
         
         let brushColor:[UIColor] = [.black, .blue, .green, .red, .purple]
         brushColor.forEach({ (color) in
-            let btn = makeButton(bgColor: color)
-            brushOptions.addArrangedSubview(btn)
+            if let btn = viewModel?.makeButton(bgColor: color) {
+                brushOptions.addArrangedSubview(btn)
+            }
         })
+        
+        if let eraserOption = viewModel?.makeButton(bgColor: .clear, UIImage(named: "eraser")) {
+            brushOptions.addArrangedSubview(eraserOption)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         // Load previous brushstrokes if they any exist in Core Data
-        viewModel?.savedBrushstrokes.forEach({ canvas.layer.addSublayer($0)})
+        viewModel?.savedBrushstrokes.forEach({ bgView.layer.addSublayer($0)} )
+        view.sendSubviewToBack(bgView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -40,40 +49,43 @@ class DetailViewController: UIViewController {
         (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
     }
     
-    func makeButton(bgColor:UIColor, _ bgImage: UIImage? = nil) -> UIButton {
-        let button = UIButton(type: .system)
-        button.backgroundColor = bgColor
-        button.layer.cornerRadius = 9.0
-        button.titleLabel?.font = .boldSystemFont(ofSize: 22.0)
-        button.setTitle("\(bgColor == UIColor.black ? "X":"")", for: UIControl.State.normal)
-        button.addTarget(self, action: #selector(didTap), for: .touchUpInside)
-        button.showsTouchWhenHighlighted = true
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.white, for: .selected)
-        return button
-    }
-    
     @objc func didTap(_ sender: UIButton) {
         brushOptions.subviews.forEach({ (view) in
-            if let btn = view as? UIButton { btn.setTitle("", for: UIControl.State.normal) }
+            if let btn = view as? UIButton { btn.setTitle("", for: .normal) }
         })
         
-        if let color = sender.backgroundColor {
+        sender.setTitle("X", for: .normal)
+        if let color = sender.backgroundColor, color != .clear {
             canvas.drawColor = color
-            sender.setTitle("X", for: UIControl.State.normal)
         } else {
             canvas.drawColor = .lightGray
         }
+        brushSizePreview.backgroundColor = canvas.drawColor
     }
 }
 
 extension DetailViewController: DrawDelegate {
     
     func brushstrokeStarted() {
-        viewModel?.createNewStroke(canvas.drawColor)
+        viewModel?.createNewStroke(canvas.drawColor, Float(canvas.brushSize))
     }
     
     func brushstrokeEnded() {
-        viewModel?.finalizeStroke(path: canvas.drawPath)
+        viewModel?.finalizeStroke(path: canvas.drawPath, canvas.getImage())
+    }
+}
+
+// Change the brush size when UISlider value is updated
+extension DetailViewController {
+    @IBAction func brushSliderUpdated(_ sender: UISlider) {
+        let newBrushValue = CGFloat(sender.value)
+        let previewWidth = newBrushValue < 3.0 ? min(newBrushValue + 1, 3.0):newBrushValue
+        
+        canvas.brushSize = newBrushValue
+        brushPreviewConstraint.constant = previewWidth
+        UIView.animate(withDuration: 0.25) {
+            self.brushSizePreview.layer.cornerRadius = previewWidth/2.0
+            self.view.layoutIfNeeded()
+        }
     }
 }

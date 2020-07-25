@@ -31,9 +31,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylo-c4-hQB" customClass="CanvasView" customModule="drawapp" customModuleProvider="target">
-                                <rect key="frame" x="20" y="225" width="374" height="637"/>
+                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
+                                <rect key="frame" x="20" y="230" width="374" height="20.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20.5" id="hMN-wF-mso"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3pp-Wn-Yn3">
+                                <rect key="frame" x="20" y="262.5" width="374" height="599.5"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylo-c4-hQB" customClass="CanvasView" customModule="drawapp" customModuleProvider="target">
+                                <rect key="frame" x="20" y="262.5" width="374" height="599.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Fmc-Ai-8i8">
                                 <rect key="frame" x="10" y="98" width="394" height="50"/>
@@ -41,32 +54,78 @@
                                     <constraint firstAttribute="height" constant="50" id="RmQ-Nu-hiw"/>
                                 </constraints>
                             </stackView>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0XM-y9-sOw">
-                                <rect key="frame" x="20" y="174" width="374" height="20.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="1" maxValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="SPV-Ar-3gt">
+                                <rect key="frame" x="42" y="180" width="238" height="31"/>
+                                <connections>
+                                    <action selector="brushSliderUpdated:" destination="JEX-9P-axG" eventType="valueChanged" id="1YO-dH-iSL"/>
+                                </connections>
+                            </slider>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ruH-mN-en8">
+                                <rect key="frame" x="322" y="159" width="72" height="72"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rcf-oU-W9p">
+                                        <rect key="frame" x="33.5" y="33.5" width="5" height="5"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="5" id="Rwd-eK-kGx"/>
+                                            <constraint firstAttribute="width" secondItem="Rcf-oU-W9p" secondAttribute="height" multiplier="1:1" id="kJb-AK-L7m"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <real key="value" value="2.5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Rcf-oU-W9p" firstAttribute="centerY" secondItem="ruH-mN-en8" secondAttribute="centerY" id="2ux-UR-YN7"/>
+                                    <constraint firstAttribute="width" secondItem="ruH-mN-en8" secondAttribute="height" multiplier="1:1" id="Fvv-WP-rQl"/>
+                                    <constraint firstAttribute="width" constant="72" id="G9b-s8-gT7">
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.cornerRadius" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </constraint>
+                                    <constraint firstItem="Rcf-oU-W9p" firstAttribute="centerX" secondItem="ruH-mN-en8" secondAttribute="centerX" id="apj-M5-TLI"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="VUw-jc-0yf" firstAttribute="trailing" secondItem="ylo-c4-hQB" secondAttribute="trailing" constant="20" id="6Vh-Wb-BaW"/>
+                            <constraint firstItem="ylo-c4-hQB" firstAttribute="leading" secondItem="3pp-Wn-Yn3" secondAttribute="leading" id="7qE-fi-1A4"/>
+                            <constraint firstItem="ylo-c4-hQB" firstAttribute="bottom" secondItem="3pp-Wn-Yn3" secondAttribute="bottom" id="7yZ-KP-YVl"/>
+                            <constraint firstItem="SPV-Ar-3gt" firstAttribute="top" secondItem="Fmc-Ai-8i8" secondAttribute="bottom" constant="32" id="8hq-0u-EgI"/>
                             <constraint firstItem="Fmc-Ai-8i8" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="10" id="B68-co-7Bg"/>
-                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="Fmc-Ai-8i8" secondAttribute="bottom" constant="26" id="Otr-kQ-ciB"/>
+                            <constraint firstItem="ylo-c4-hQB" firstAttribute="trailing" secondItem="3pp-Wn-Yn3" secondAttribute="trailing" id="BqF-f9-kgM"/>
+                            <constraint firstItem="ruH-mN-en8" firstAttribute="trailing" secondItem="ylo-c4-hQB" secondAttribute="trailing" id="E8c-TS-wjN"/>
+                            <constraint firstItem="SPV-Ar-3gt" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="44" id="JFS-iS-8Pe"/>
+                            <constraint firstItem="ruH-mN-en8" firstAttribute="centerY" secondItem="SPV-Ar-3gt" secondAttribute="centerY" id="Sld-EC-HwP"/>
                             <constraint firstItem="0XM-y9-sOw" firstAttribute="leading" secondItem="svH-Pt-448" secondAttribute="leading" constant="20" symbolic="YES" id="Tsc-yG-G1q"/>
+                            <constraint firstItem="ruH-mN-en8" firstAttribute="leading" secondItem="SPV-Ar-3gt" secondAttribute="trailing" constant="44" id="UyV-Nv-bB0"/>
                             <constraint firstItem="Fmc-Ai-8i8" firstAttribute="trailing" secondItem="VUw-jc-0yf" secondAttribute="trailing" constant="-10" id="VNo-bV-yl7"/>
                             <constraint firstItem="ylo-c4-hQB" firstAttribute="leading" secondItem="VUw-jc-0yf" secondAttribute="leading" constant="20" id="fDa-Sq-ieF"/>
                             <constraint firstItem="Fmc-Ai-8i8" firstAttribute="top" secondItem="VUw-jc-0yf" secondAttribute="top" constant="10" id="kwx-5f-g68"/>
+                            <constraint firstItem="0XM-y9-sOw" firstAttribute="top" secondItem="SPV-Ar-3gt" secondAttribute="bottom" constant="20" id="sQ1-F1-clr"/>
                             <constraint firstAttribute="trailing" secondItem="0XM-y9-sOw" secondAttribute="trailing" constant="20" symbolic="YES" id="tHV-ZD-HQj"/>
+                            <constraint firstItem="ylo-c4-hQB" firstAttribute="top" secondItem="3pp-Wn-Yn3" secondAttribute="top" id="vfl-Ft-8Uh"/>
                             <constraint firstItem="ylo-c4-hQB" firstAttribute="bottom" secondItem="VUw-jc-0yf" secondAttribute="bottom" id="wMs-Lc-K6F"/>
-                            <constraint firstItem="ylo-c4-hQB" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="30.5" id="xES-0C-1Cz"/>
+                            <constraint firstItem="ylo-c4-hQB" firstAttribute="top" secondItem="0XM-y9-sOw" secondAttribute="bottom" constant="12" id="xES-0C-1Cz"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
                     <connections>
+                        <outlet property="bgView" destination="3pp-Wn-Yn3" id="OR6-fI-nHb"/>
                         <outlet property="brushOptions" destination="Fmc-Ai-8i8" id="XDu-lo-v7c"/>
+                        <outlet property="brushPreviewConstraint" destination="Rwd-eK-kGx" id="RX9-x3-bg5"/>
+                        <outlet property="brushSizePreview" destination="Rcf-oU-W9p" id="w3b-GH-f7p"/>
                         <outlet property="canvas" destination="ylo-c4-hQB" id="ZPW-Vp-rwy"/>
                         <outlet property="detailDescriptionLabel" destination="0XM-y9-sOw" id="deQ-Na-JPF"/>
                     </connections>
@@ -125,7 +184,7 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="MDimore Drawing App iOS Task" id="Zdf-7t-Un8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>

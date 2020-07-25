@@ -16,11 +16,11 @@ protocol DrawDelegate {
 class CanvasView: UIView {
 	
 	var drawColor = UIColor.black
-    var lineWidth: CGFloat = 5.0
+    var brushSize: CGFloat = 5.0
     var delegate: DrawDelegate?
     var drawPath: UIBezierPath!
-    private var lastPoint: CGPoint!
     private var preRenderImage: UIImage!
+    private var lastPoint: CGPoint!
     
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -39,9 +39,8 @@ class CanvasView: UIView {
 	}
 	
     func getImage() -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0.0)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        let renderer = UIGraphicsImageRenderer(size: bounds.size)
+        let image = renderer.image { ctx in superview!.drawHierarchy(in: bounds, afterScreenUpdates: true) }
         
         return image
     }
@@ -50,31 +49,27 @@ class CanvasView: UIView {
 	override func draw(_ rect: CGRect) {
 		super.draw(rect)
         if preRenderImage != nil { preRenderImage.draw(in: bounds) }
-		drawPath.lineWidth = lineWidth
+		drawPath.lineWidth = brushSize
 		drawColor.setStroke()
 		drawPath.stroke()
 	}
 
 	// MARK: - Clearing
 	func clear() {
+        preRenderImage = nil
 		drawPath.removeAllPoints()
 		setNeedsDisplay()
 	}
     
     func renderToImage() {
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        if preRenderImage != nil { preRenderImage.draw(in: bounds) }
         
-        UIGraphicsBeginImageContextWithOptions(self.bounds.size, false, 0.0)
-        if preRenderImage != nil {
-            preRenderImage.draw(in: self.bounds)
-        }
-        
-        drawPath.lineWidth = lineWidth
+        drawPath.lineWidth = brushSize
         drawColor.setFill()
         drawColor.setStroke()
         drawPath.stroke()
-        
         preRenderImage = UIGraphicsGetImageFromCurrentImageContext()
-        
         UIGraphicsEndImageContext()
     }
 }
