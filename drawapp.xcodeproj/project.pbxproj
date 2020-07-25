@@ -29,7 +29,7 @@
 		2D2EC42C24CC8F9800E1DA8A /* Drawing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Drawing+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2D2EC42D24CC8F9800E1DA8A /* Brushstroke+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brushstroke+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2D2EC42E24CC8F9800E1DA8A /* Brushstroke+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brushstroke+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		2D62ED0A24CC3B4100E20525 /* drawapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drawapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D62ED0A24CC3B4100E20525 /* Drawing App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Drawing App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D62ED0D24CC3B4100E20525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D62ED1024CC3B4100E20525 /* drawapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = drawapp.xcdatamodel; sourceTree = "<group>"; };
 		2D62ED1224CC3B4200E20525 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -77,7 +77,7 @@
 		2D62ED0B24CC3B4100E20525 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2D62ED0A24CC3B4100E20525 /* drawapp.app */,
+				2D62ED0A24CC3B4100E20525 /* Drawing App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,7 +126,7 @@
 			);
 			name = drawapp;
 			productName = drawapp;
-			productReference = 2D62ED0A24CC3B4100E20525 /* drawapp.app */;
+			productReference = 2D62ED0A24CC3B4100E20525 /* Drawing App.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -338,12 +338,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z56G8V2664;
 				INFOPLIST_FILE = drawapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikedimore.drawapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Drawing App";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -357,12 +358,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z56G8V2664;
 				INFOPLIST_FILE = drawapp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikedimore.drawapp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Drawing App";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

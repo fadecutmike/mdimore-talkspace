@@ -62,7 +62,7 @@ class CanvasView: UIView {
 	}
     
     func renderToImage() {
-        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, 0.0)
         if preRenderImage != nil { preRenderImage.draw(in: bounds) }
         
         drawPath.lineWidth = brushSize
