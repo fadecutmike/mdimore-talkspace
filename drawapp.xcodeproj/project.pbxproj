@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2EC42A24CC8E1500E1DA8A /* CanvasViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC42924CC8E1500E1DA8A /* CanvasViewModel.swift */; };
+		2D2EC42F24CC8F9800E1DA8A /* Drawing+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC42B24CC8F9800E1DA8A /* Drawing+CoreDataClass.swift */; };
+		2D2EC43024CC8F9800E1DA8A /* Drawing+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC42C24CC8F9800E1DA8A /* Drawing+CoreDataProperties.swift */; };
+		2D2EC43124CC8F9800E1DA8A /* Brushstroke+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC42D24CC8F9800E1DA8A /* Brushstroke+CoreDataClass.swift */; };
+		2D2EC43224CC8F9800E1DA8A /* Brushstroke+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D2EC42E24CC8F9800E1DA8A /* Brushstroke+CoreDataProperties.swift */; };
 		2D62ED0E24CC3B4100E20525 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D62ED0D24CC3B4100E20525 /* AppDelegate.swift */; };
 		2D62ED1124CC3B4200E20525 /* drawapp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D62ED0F24CC3B4100E20525 /* drawapp.xcdatamodeld */; };
 		2D62ED1324CC3B4200E20525 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D62ED1224CC3B4200E20525 /* SceneDelegate.swift */; };
@@ -15,9 +20,15 @@
 		2D62ED1A24CC3B4200E20525 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D62ED1824CC3B4200E20525 /* Main.storyboard */; };
 		2D62ED1C24CC3B4500E20525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D62ED1B24CC3B4500E20525 /* Assets.xcassets */; };
 		2D62ED1F24CC3B4500E20525 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D62ED1D24CC3B4500E20525 /* LaunchScreen.storyboard */; };
+		2D62ED3224CC414500E20525 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D62ED3124CC414500E20525 /* CanvasView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D2EC42924CC8E1500E1DA8A /* CanvasViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasViewModel.swift; sourceTree = "<group>"; };
+		2D2EC42B24CC8F9800E1DA8A /* Drawing+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Drawing+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2D2EC42C24CC8F9800E1DA8A /* Drawing+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Drawing+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2D2EC42D24CC8F9800E1DA8A /* Brushstroke+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brushstroke+CoreDataClass.swift"; sourceTree = "<group>"; };
+		2D2EC42E24CC8F9800E1DA8A /* Brushstroke+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brushstroke+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2D62ED0A24CC3B4100E20525 /* drawapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = drawapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D62ED0D24CC3B4100E20525 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2D62ED1024CC3B4100E20525 /* drawapp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = drawapp.xcdatamodel; sourceTree = "<group>"; };
@@ -28,6 +39,8 @@
 		2D62ED1B24CC3B4500E20525 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2D62ED1E24CC3B4500E20525 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D62ED2024CC3B4500E20525 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2D62ED3124CC414500E20525 /* CanvasView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
+		2DC4CCE024CC95700098A1E1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,11 +54,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D2EC43324CC8FB500E1DA8A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				2D2EC42B24CC8F9800E1DA8A /* Drawing+CoreDataClass.swift */,
+				2D2EC42C24CC8F9800E1DA8A /* Drawing+CoreDataProperties.swift */,
+				2D2EC42D24CC8F9800E1DA8A /* Brushstroke+CoreDataClass.swift */,
+				2D2EC42E24CC8F9800E1DA8A /* Brushstroke+CoreDataProperties.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 		2D62ED0124CC3B4100E20525 = {
 			isa = PBXGroup;
 			children = (
 				2D62ED0C24CC3B4100E20525 /* drawapp */,
 				2D62ED0B24CC3B4100E20525 /* Products */,
+				2DC4CCDF24CC95700098A1E1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,8 +86,11 @@
 			isa = PBXGroup;
 			children = (
 				2D62ED0D24CC3B4100E20525 /* AppDelegate.swift */,
+				2D2EC43324CC8FB500E1DA8A /* Core Data */,
 				2D62ED1224CC3B4200E20525 /* SceneDelegate.swift */,
 				2D62ED1424CC3B4200E20525 /* MasterViewController.swift */,
+				2D62ED3124CC414500E20525 /* CanvasView.swift */,
+				2D2EC42924CC8E1500E1DA8A /* CanvasViewModel.swift */,
 				2D62ED1624CC3B4200E20525 /* DetailViewController.swift */,
 				2D62ED1824CC3B4200E20525 /* Main.storyboard */,
 				2D62ED1B24CC3B4500E20525 /* Assets.xcassets */,
@@ -71,6 +99,14 @@
 				2D62ED0F24CC3B4100E20525 /* drawapp.xcdatamodeld */,
 			);
 			path = drawapp;
+			sourceTree = "<group>";
+		};
+		2DC4CCDF24CC95700098A1E1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DC4CCE024CC95700098A1E1 /* CoreData.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,11 +180,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D2EC43024CC8F9800E1DA8A /* Drawing+CoreDataProperties.swift in Sources */,
 				2D62ED1524CC3B4200E20525 /* MasterViewController.swift in Sources */,
 				2D62ED0E24CC3B4100E20525 /* AppDelegate.swift in Sources */,
 				2D62ED1724CC3B4200E20525 /* DetailViewController.swift in Sources */,
+				2D62ED3224CC414500E20525 /* CanvasView.swift in Sources */,
 				2D62ED1124CC3B4200E20525 /* drawapp.xcdatamodeld in Sources */,
+				2D2EC43124CC8F9800E1DA8A /* Brushstroke+CoreDataClass.swift in Sources */,
 				2D62ED1324CC3B4200E20525 /* SceneDelegate.swift in Sources */,
+				2D2EC43224CC8F9800E1DA8A /* Brushstroke+CoreDataProperties.swift in Sources */,
+				2D2EC42F24CC8F9800E1DA8A /* Drawing+CoreDataClass.swift in Sources */,
+				2D2EC42A24CC8E1500E1DA8A /* CanvasViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +334,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z56G8V2664;
 				INFOPLIST_FILE = drawapp/Info.plist;
@@ -302,7 +345,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikedimore.drawapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -310,6 +353,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z56G8V2664;
 				INFOPLIST_FILE = drawapp/Info.plist;
@@ -320,7 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mikedimore.drawapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Event" representedClassName="Event" codeGenerationType="class">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Brushstroke" representedClassName="Brushstroke" syncable="YES">
+        <attribute name="color" optional="YES" attributeType="Binary"/>
+        <attribute name="ended" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="path" optional="YES" attributeType="Binary"/>
+        <attribute name="started" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="thickness" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="parent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Drawing" inverseName="brushstrokes" inverseEntity="Drawing"/>
+    </entity>
+    <entity name="Drawing" representedClassName="Drawing">
+        <attribute name="thumbnail" optional="YES" attributeType="Binary"/>
         <attribute name="timestamp" optional="YES" attributeType="Date"/>
+        <relationship name="brushstrokes" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Brushstroke" inverseName="parent" inverseEntity="Brushstroke"/>
+        <userInfo/>
     </entity>
     <elements>
-        <element name="Event" positionX="261" positionY="189" width="128" height="60"/>
+        <element name="Brushstroke" positionX="261" positionY="207" width="128" height="133"/>
+        <element name="Drawing" positionX="261" positionY="189" width="128" height="88"/>
     </elements>
 </model>
