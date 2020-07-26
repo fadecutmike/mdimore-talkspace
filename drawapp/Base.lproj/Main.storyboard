@@ -120,7 +120,7 @@
                         <viewLayoutGuide key="safeArea" id="VUw-jc-0yf"/>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Detail" id="mOI-FS-AaM"/>
+                    <navigationItem key="navigationItem" title="Canvas" id="mOI-FS-AaM"/>
                     <connections>
                         <outlet property="bgView" destination="3pp-Wn-Yn3" id="OR6-fI-nHb"/>
                         <outlet property="brushOptions" destination="Fmc-Ai-8i8" id="XDu-lo-v7c"/>
