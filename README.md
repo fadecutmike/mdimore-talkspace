@@ -1,3 +1,5 @@
+<img src="https://i.ibb.co/yd5KP1v/mdimore-talkspace-appicon.png" border="0">
+
 # mdimore-talkspace
 iOS Drawing application task
 
